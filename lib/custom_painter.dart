@@ -9,6 +9,8 @@ class MyCustomPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     //   var hour = 5;
     // var minutes = 30;
+    const bool isRoman = true;
+
     const roman = [
       'XII',
       'I',
@@ -23,6 +25,20 @@ class MyCustomPainter extends CustomPainter {
       'X',
       'XI',
     ];
+    // const digits = [
+    //   '12'
+    //       '1',
+    //   '2',
+    //   '3',
+    //   '4',
+    //   '5',
+    //   '6',
+    //   '7',
+    //   '8',
+    //   '9',
+    //   '10',
+    //   '11'
+    // ];
     final double height = size.height;
     final double width = size.width;
     final double radius = min(height, width) / 2;
@@ -33,6 +49,9 @@ class MyCustomPainter extends CustomPainter {
 
     final double hoursLineWidth = radius * 0.05;
     final double hoursLineLength = radius * 0.15;
+
+    final double secondsLineLenght = radius * 0.18;
+    final double secondsLineWidth = radius * 0.05;
 
     final double minutesNeedleBaseRadius = radius * 0.06;
     final double hoursNeedleBaseRadius = radius * 0.1;
@@ -98,6 +117,7 @@ class MyCustomPainter extends CustomPainter {
       }
       if (i / 5 == hours) {
         // draw hoursNeedle
+
         canvas.drawLine(
             Offset(0, -hoursNeedleBaseRadius),
             Offset(0, -radius + hoursNeedleGap),
@@ -116,13 +136,23 @@ class MyCustomPainter extends CustomPainter {
               ..strokeWidth = minutesNeedleWidth
               ..strokeCap = StrokeCap.round);
       }
+
       if (isHour) {
+        // var text = isRoman ? roman[i ~/ 5] : null;
+        var text = roman[i ~/ 5];
         tickLength = hoursLineLength;
         lineColor = hoursLinePaint;
+
+        TextPainter textPainter = TextPainter();
+        textPainter.textDirection = TextDirection.ltr;
+        textPainter.text = TextSpan(text: text);
+        textPainter.layout();
+        textPainter.paint(canvas, Offset(0, -radius + hoursNeedleGap - 8));
       } else {
         tickLength = minutesLineLength;
         lineColor = minutesLineColor;
       }
+
       canvas.drawLine(
           Offset(0, -radius), Offset(0, -radius + tickLength), lineColor);
 

@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-class namePainter extends CustomPainter {
+class NamePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint paintFill0 = Paint()
@@ -67,8 +67,8 @@ class namePainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(namePainter oldDelegate) => false;
+  bool shouldRepaint(NamePainter oldDelegate) => false;
 
   @override
-  bool shouldRebuildSemantics(namePainter oldDelegate) => false;
+  bool shouldRebuildSemantics(NamePainter oldDelegate) => false;
 }

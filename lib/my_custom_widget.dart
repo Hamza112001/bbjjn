@@ -7,7 +7,7 @@ class MyClockWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: MyCustomPainter(),
+      painter: MyCustomPainter(now: DateTime.now()),
       child: const SizedBox(
         height: 300,
         width: 300,

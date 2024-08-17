@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             CustomPaint(
-              painter: MyCustomPainter(now: now),
+              painter: MyCustomPainter(now: DateTime.now()),
               child: const SizedBox(
                 height: 300,
                 width: 300,
